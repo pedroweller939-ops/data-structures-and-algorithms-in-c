@@ -1,7 +1,3 @@
-//
-// Created by weller on 01/10/2026.
-//
-
 #ifndef STATIC_SEQUENTIAL_LIST_H
 #define STATIC_SEQUENTIAL_LIST_H
 
