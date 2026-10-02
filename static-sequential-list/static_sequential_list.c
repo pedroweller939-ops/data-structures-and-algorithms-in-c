@@ -5,7 +5,7 @@ void init_list(List *list) {
     list->count = 0;
 }
 
-void insert(int value, List *list) {
+void insert_ord(int value, List *list) {
     if (list->count >= MAX) {
         printf("Too many elements\n");
         return;

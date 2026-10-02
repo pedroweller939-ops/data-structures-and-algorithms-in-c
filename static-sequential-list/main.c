@@ -11,13 +11,13 @@ int main(void) {
     init_list(&list_b);
 
     // Operações na Lista A
-    insert(10, &list_a);
-    insert(20, &list_a);
-    insert(30, &list_a);
+    insert_ord(10, &list_a);
+    insert_ord(20, &list_a);
+    insert_ord(30, &list_a);
 
     // Operações na Lista B
-    insert(100, &list_b);
-    insert(200, &list_b);
+    insert_ord(100, &list_b);
+    insert_ord(200, &list_b);
 
     printf("--- List A (Size: %d) ---\n", size(&list_a));
     print_list(&list_a);
