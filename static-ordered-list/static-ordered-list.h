@@ -1,7 +1,3 @@
-//
-// Created by weller on 02/10/2026.
-//
-
 #ifndef DATA_STRUCTURES_STATIC_ORDERED_LIST_H
 #define DATA_STRUCTURES_STATIC_ORDERED_LIST_H
 
