@@ -12,13 +12,20 @@ add_executable(test_static_list
 
 # Executable 2: Static Ordered List
 add_executable(test_static_ordered_list
+master
         static-ordered-list/static-ordered-list.h
         static-ordered-list/static-ordered-list.c
         static-ordered-list/main.c
+
+    static-ordered-list/static-ordered-list.h
+    static-ordered-list/static-ordered-list.c
+    static-ordered-list/main.c
+ main
 )
 
 # Executable 3: Singly Linked List
 add_executable(singly-linked-list
+ master
         singly-linked-list/singly-linked-list.h
         singly-linked-list/singly-linked-list.c
         singly-linked-list/main.c
@@ -30,3 +37,9 @@ add_executable(singly-linked-ordered-list
         singly-linked-ordered-list/singly-linked-ordered-list.c
         singly-linked-ordered-list/main.c
 )
+
+    singly-linked-list/singly-linked-list.h
+    singly-linked-list/singly-linked-list.c
+    singly-linked-list/main.c
+)
+ main
