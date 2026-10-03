@@ -30,3 +30,10 @@ add_executable(singly-linked-ordered-list
         singly-linked-ordered-list/singly-linked-ordered-list.c
         singly-linked-ordered-list/main.c
 )
+
+# Executable 5: Doubly Linked List
+add_executable(doubly-linked-list
+        doubly-linked-list/doubly-linked-list.h
+        doubly-linked-list/doubly-linked-list.c
+        doubly-linked-list/main.c
+)
