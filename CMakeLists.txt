@@ -37,3 +37,10 @@ add_executable(doubly-linked-list
         doubly-linked-list/doubly-linked-list.c
         doubly-linked-list/main.c
 )
+
+# Executable 6: Doubly Linked Ordered List
+add_executable(doubly-linked-ordered-list
+        doubly-linked-ordered-list/doubly-linked-ordered-list.h
+        doubly-linked-ordered-list/doubly-linked-ordered-list.c
+        doubly-linked-ordered-list/main.c
+)
