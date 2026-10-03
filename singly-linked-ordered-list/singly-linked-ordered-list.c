@@ -3,11 +3,10 @@
 
        0 : Success;
       -1 : Invalid list pointer (NULL);
-      -2 : Memory allocation error;
+      -2 : Memory allocation error / Empty list operation;
       -3 : Element or index not found;
       -4 : Corrupted list structure;
 */
-
 
 #include "singly-linked-ordered-list.h"
 #include <stdio.h>
@@ -28,7 +27,8 @@ int print_list(LinkedList *List) {
     }
 
     if (List->head == NULL) {
-        return -2;
+        printf("\n");
+        return 0;
     }
 
     Node *current_node = List->head;
@@ -43,7 +43,7 @@ int print_list(LinkedList *List) {
 }
 
 int is_empty(LinkedList *List) {
-    if (List -> size == 0 || List -> head == NULL) {
+    if (List == NULL || List->size == 0 || List->head == NULL) {
         return 1;
     }
     return 0;
@@ -52,10 +52,6 @@ int is_empty(LinkedList *List) {
 int get_size(LinkedList *List) {
     if (List == NULL) {
         return -1;
-    }
-
-    if (List->head == NULL) {
-        return -2;
     }
 
     return List->size;
@@ -67,7 +63,7 @@ int get_index(LinkedList *List, int data) {
     }
 
     if (List->head == NULL) {
-        return -2;
+        return -3;
     }
 
     Node *current_node = List->head;
@@ -105,7 +101,7 @@ int clear_list(LinkedList *List) {
     }
 
     if (List->head == NULL) {
-        return -2;
+        return 0;
     }
 
     Node *current_node = List->head;
@@ -133,19 +129,19 @@ int get_data(LinkedList *List, int index, int *out_value) {
 
     if (index < 0 || index >= List->size) {
         return -3;
-    } else {
-        Node *current_node = List->head;
-        for (int i = 0; i < index; i++) {
-            current_node = current_node->next;
-
-            if (current_node == NULL) {
-                return -4;
-            }
-        }
-
-        *out_value = current_node->data;
-        return 0;
     }
+
+    Node *current_node = List->head;
+    for (int i = 0; i < index; i++) {
+        current_node = current_node->next;
+
+        if (current_node == NULL) {
+            return -4;
+        }
+    }
+
+    *out_value = current_node->data;
+    return 0;
 }
 
 int insert(LinkedList *List, int data) {
@@ -215,15 +211,15 @@ int remove_at(LinkedList *List, int index) {
         return -1;
     }
 
-    if (index < 0 || index >= List->size) {
+    if (List->head == NULL) {
         return -2;
     }
 
-    if (List->head == NULL) {
+    if (index < 0 || index >= List->size) {
         return -3;
     }
 
-    if (List->head->next == NULL || index == 0) {
+    if (index == 0) {
         Node *node_to_remove = List->head;
         List->head = List->head->next;
         free(node_to_remove);
@@ -239,7 +235,6 @@ int remove_at(LinkedList *List, int index) {
         }
 
         previous_node->next = current_node->next;
-        current_node->next = NULL;
         free(current_node);
         List->size--;
         return 0;
