@@ -36,11 +36,51 @@ add_executable(doubly-linked-list
         doubly-linked-list/doubly-linked-list.h
         doubly-linked-list/doubly-linked-list.c
         doubly-linked-list/main.c
+        linked-stack/linked-stack.c
+        linked-stack/linked-stack.h
+        linked-stack/main.c
+        static-queue/static-queue.c
+        static-queue/static-queue.h
+        static-queue/main.c
+        linked-queue/linked-queue.c
+        linked-queue/linked-queue.h
+        linked-queue/main.c
 )
 
-# Executable 6: Doubly Linked Ordered List
+# Executable 6: Static Stack
+add_executable(static-stack
+        static-stack/static-stack.h
+        static-stack/static-stack.c
+        static-stack/main.c
+)
+
+# Executable 7: Linked Stack
+add_executable(linked-stack
+        linked-stack/linked-stack.h
+        linked-stack/linked-stack.c
+        linked-stack/main.c
+)
+
+# Executable 8: Doubly Linked Ordered List
 add_executable(doubly-linked-ordered-list
         doubly-linked-ordered-list/doubly-linked-ordered-list.h
         doubly-linked-ordered-list/doubly-linked-ordered-list.c
         doubly-linked-ordered-list/main.c
+)
+
+# Executable 9: Static Queue
+add_executable(static-queue
+        static-queue/static-queue.c
+        static-queue/static-queue.h
+        static-queue/main.c
+
+)
+
+# Executable 10: Linked Queue
+add_executable(linked-queue
+        linked-queue/linked-queue.c
+        linked-queue/linked-queue.h
+        linked-queue/main.c
+
+
 )
