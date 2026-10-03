@@ -4,21 +4,24 @@
 
 int main(void) {
 
-    printf("   SINGLY LINKED LIST TEST PROGRAM\n\n");
 
-    printf(" === Creating the list ===\n");
+    printf("        SINGLY LINKED LIST TEST PROGRAM\n");
+
+
+    // 1. Initializing and verifying list creation
+    printf("=== 1. Creating the List ===\n");
     LinkedList *list = create_list();
 
     if (list == NULL) {
-        printf("Error: Failed to allocate memory.\n");
+        printf("Error: Failed to allocate memory for the list.\n");
         return 1;
     }
-    printf("List created!\n");
-    printf("Initial Size: %d\n", get_size(list));
-    printf("Is Empty? %s\n\n", is_empty(list) ? "Yes" : "No");
+    printf("List successfully created!\n");
+    printf("Initial Size : %d\n", get_size(list));
+    printf("Is Empty?    : %s\n\n", is_empty(list) ? "Yes" : "No");
 
-    // 2. Inserting elements
-    printf("=== Testing Insertions ===\n");
+    // 2. Testing positional insertions
+    printf("=== 2. Testing Insertions ===\n");
 
     printf("Inserting 10 at the end...\n");
     insert_last(list, 10);
@@ -26,79 +29,80 @@ int main(void) {
     printf("Inserting 30 at the end...\n");
     insert_last(list, 30);
 
-    printf("Inserting 20 at index 1.\n");
+    printf("Inserting 20 at index 1...\n");
     insert_at(list, 20, 1);
 
-    printf("Inserting 5 at index 0.\n");
+    printf("Inserting 5  at index 0...\n");
     insert_at(list, 5, 0);
 
-    printf("Inserting 40 at index 4.\n");
+    printf("Inserting 40 at index 4...\n");
     insert_at(list, 40, 4);
 
-    printf("\nCurrent list: ");
+    printf("\nCurrent List : ");
     print_list(list);
-    printf("Current Size: %d\n\n", get_size(list));
+    printf("Current Size : %d\n\n", get_size(list));
 
-    printf("=== Testing Search and Retrieval ===\n");
+    // 3. Testing lookup and element retrieval
+    printf("=== 3. Testing Search and Retrieval ===\n");
     int value = 0;
 
-    // Get data at index 2
     int status = get_data(list, 2, &value);
     if (status == 0) {
-        printf("Value at index 2: %d\n", value);
+        printf("Value at index 2 : %d (Expected: 20)\n", value);
     } else {
-        printf("Failed to get data at index 2. Error code: %d\n", status);
+        printf("Failed to retrieve data at index 2. Error code: %d\n", status);
     }
 
-
     int index = get_index(list, 30);
-    printf("Index of value 30: %d\n", index);
+    printf("Index of value 30 : %d (Expected: 3)\n", index);
 
+    printf("Contains 20?     : %s\n", contains(list, 20) ? "Yes" : "No");
+    printf("Contains 99?     : %s\n\n", contains(list, 99) ? "Yes" : "No");
 
-    printf("Contains 20? %d\n", contains(list, 20));
-    printf("Contains 99? %d\n\n", contains(list, 99));
-
-
-    printf("=== Testing Invalid Operations ===\n");
+    // 4. Testing boundary checks and invalid parameters
+    printf("=== 4. Testing Invalid Operations ===\n");
 
     status = get_data(list, 10, &value);
-    printf("Index 10 result: %d (Expected error -4)\n\n", status);
+    printf("Accessing index 10 result : %d (Expected error -3: Out of bounds)\n\n", status);
 
-    printf("=== Testing Removals ===\n");
+    // 5. Testing node removal logic
+    printf("=== 5. Testing Removals ===\n");
 
     printf("Removing element at index 2 (value 20)...\n");
     remove_at(list, 2);
-    printf("Current list: ");
+    printf("Current List : ");
     print_list(list);
 
-    printf("Removing first element (index 0)...\n");
+    printf("Removing head element (index 0)...\n");
     remove_at(list, 0);
-    printf("Current list: ");
+    printf("Current List : ");
     print_list(list);
 
-    printf("Removing last element...\n");
+    printf("Removing tail element...\n");
     remove_last(list);
-    printf("Current list: ");
+    printf("Current List : ");
     print_list(list);
 
-    printf("Final Size: %d\n\n", get_size(list));
+    printf("Final Size   : %d\n\n", get_size(list));
 
-
-    printf("=== Clearing the List ===\n");
+    // 6. Testing list clearing and reset
+    printf("=== 6. Clearing the List ===\n");
     clear_list(list);
 
-    printf("Current list: ");
+    printf("Current List : ");
     print_list(list);
-    printf("Size after clearing: %d\n", get_size(list));
-    printf("Is Empty? %s\n\n", is_empty(list) ? "Yes" : "No");
+    printf("Size after clear : %d\n", get_size(list));
+    printf("Is Empty?        : %s\n\n", is_empty(list) ? "Yes" : "No");
 
-    printf("=== Testing Operations on Empty List ===\n");
+    // 7. Testing operations on an empty structure
+    printf("=== 7. Testing Operations on Empty List ===\n");
     status = remove_last(list);
-    printf("Removing from empty list result: %d (Expected error -2)\n\n", status);
+    printf("Removing from empty list result : %d (Expected error -2: Empty list)\n\n", status);
 
     free(list);
 
-    printf("        TEST COMPLETED\n");
+
+    printf("              TEST RUN COMPLETED\n");
 
 
     return 0;

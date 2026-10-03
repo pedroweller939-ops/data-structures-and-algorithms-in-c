@@ -1,3 +1,13 @@
+/*
+     RETURN CODES TABLE
+
+       0 : Success;
+      -1 : Invalid list pointer (NULL);
+      -2 : List is empty / Memory allocation failure;
+      -3 : Element or index not found / Out of bounds;
+      -4 : Unexpected structure corruption;
+*/
+
 #include "singly-linked-list.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,17 +23,14 @@ LinkedList* create_list(void) {
 }
 
 int get_data(LinkedList *List, int index, int *out_value) {
-    if (out_value == NULL) {
-        return -1; // out_value pointer is NULL
-    }
-    if (List == NULL) {
-        return -2; // Invalid list pointer
+    if (List == NULL || out_value == NULL) {
+        return -1;
     }
     if (List->head == NULL) {
-        return -3; // List is empty
+        return -2;
     }
     if (index < 0 || index >= List->size) {
-        return -4; // Index out of bounds
+        return -3;
     }
 
     Node *current_node = List->head;
@@ -32,56 +39,56 @@ int get_data(LinkedList *List, int index, int *out_value) {
         current_node = current_node->next;
 
         if (current_node == NULL) {
-            return -5; // Corrupted list (unexpected NULL node)
+            return -4;
         }
     }
 
-    *out_value = current_node->data; // Success
+    *out_value = current_node->data;
     return 0;
 }
 
 int get_index(LinkedList *List, int data) {
     if (List == NULL) {
-        return -1; // List pointer is NULL
+        return -1;
     }
     if (List->head == NULL) {
-        return -2; // List is empty
+        return -2;
     }
 
     Node *current_node = List->head;
 
     for (int count = 0; count < List->size; count++) {
         if (current_node == NULL) {
-            return -3; // Corrupted list (unexpected NULL node)
+            return -4;
         }
 
         if (current_node->data == data) {
-            return count; // Success: returns matching index
+            return count;
         }
 
         current_node = current_node->next;
     }
 
-    return -4; // Data not found in list
+    return -3;
 }
 
 int contains(LinkedList *List, int data) {
     int exists = get_index(List, data);
 
     if (exists >= 0) {
-        return 1; // Found
+        return 1;
     }
 
-    return 0; // Not found or error
+    return 0;
 }
 
 int print_list(LinkedList *List) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
     if (List->head == NULL) {
         printf("List is empty.\n");
-        return -2; // List is empty
+        return -2;
     }
 
     Node *current_node = List->head;
@@ -97,17 +104,17 @@ int print_list(LinkedList *List) {
 
 int is_empty(LinkedList *List) {
     if (List == NULL || List->head == NULL) {
-        return 1; // True: List is empty or NULL
+        return 1;
     }
-    return 0; // False: List contains elements
+    return 0;
 }
 
 int get_size(LinkedList *List) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
     if (List->head == NULL) {
-        return 0; // Empty list has size 0
+        return 0;
     }
 
     return List->size;
@@ -115,10 +122,10 @@ int get_size(LinkedList *List) {
 
 int clear_list(LinkedList *List) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
     if (List->head == NULL) {
-        return 0; // List is already empty
+        return 0;
     }
 
     Node *current_node = List->head;
@@ -132,17 +139,17 @@ int clear_list(LinkedList *List) {
 
     List->head = NULL;
     List->size = 0;
-    return 0; // Success
+    return 0;
 }
 
 int insert_last(LinkedList *List, int data) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
 
     Node *new_node = (Node *)malloc(sizeof(Node));
     if (new_node == NULL) {
-        return -2; // Memory allocation failed
+        return -2;
     }
 
     new_node->data = data;
@@ -159,21 +166,21 @@ int insert_last(LinkedList *List, int data) {
     }
 
     List->size++;
-    return 0; // Success
+    return 0;
 }
 
 int insert_at(LinkedList *List, int data, int index) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
 
     if (index < 0 || index > List->size) {
-        return -2; // Invalid index position
+        return -3;
     }
 
     Node *new_node = (Node *)malloc(sizeof(Node));
     if (new_node == NULL) {
-        return -3; // Memory allocation failed
+        return -2;
     }
 
     new_node->data = data;
@@ -194,15 +201,15 @@ int insert_at(LinkedList *List, int data, int index) {
     }
 
     List->size++;
-    return 0; // Success
+    return 0;
 }
 
 int remove_last(LinkedList *List) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
     if (List->head == NULL) {
-        return -2; // List is empty, nothing to remove
+        return -2;
     }
 
     if (List->head->next == NULL) {
@@ -222,18 +229,18 @@ int remove_last(LinkedList *List) {
     }
 
     List->size--;
-    return 0; // Success
+    return 0;
 }
 
 int remove_at(LinkedList *List, int index) {
     if (List == NULL) {
-        return -1; // Invalid list pointer
+        return -1;
     }
     if (List->head == NULL) {
-        return -2; // List is empty, nothing to remove
+        return -2;
     }
     if (index < 0 || index >= List->size) {
-        return -3; // Invalid index position
+        return -3;
     }
 
     Node *node_to_remove = NULL;
@@ -254,5 +261,5 @@ int remove_at(LinkedList *List, int index) {
 
     free(node_to_remove);
     List->size--;
-    return 0; // Success
+    return 0;
 }

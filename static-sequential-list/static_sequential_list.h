@@ -1,23 +1,20 @@
 #ifndef STATIC_SEQUENTIAL_LIST_H
 #define STATIC_SEQUENTIAL_LIST_H
 
-#define MAX 10
+#define MAX 100
 
 typedef struct {
     int array[MAX];
     int count;
 } List;
 
-// Function Prototypes
-void init_list(List *list);
-void insert_ord(int value, List *list);
-int search(int value, const List *list);
-void remove_value(int value, List *list);
-int get_value(int index, const List *list);
+int init_list(List *list);
+int insert_ord(int value, List *list);
+int search(const List *list, int value);
+int remove_value(int value, List *list);
+int get_value(const List *list, int index, int *out_value);
 int size(const List *list);
-void print_list(const List *list);
-void clear(List *list);
+int print_list(const List *list);
+int clear(List *list);
 
-#endif // STATIC_SEQUENTIAL_LIST_H
-
-
+#endif
