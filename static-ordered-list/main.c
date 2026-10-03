@@ -19,7 +19,7 @@ int main() {
     insert_ord(20, &list);
     insert_ord(40, &list);
 
-    print_list(&list); // Expected: 10 20 30 40 50
+    print_list(&list);
     printf("\n");
 
     // 3. Binary Search (get_index)
@@ -45,15 +45,15 @@ int main() {
     printf("=== Removal Test ===\n");
     printf("Removing 30 (middle)...\n");
     remove_value(30, &list);
-    print_list(&list); // Expected: 10 20 40 50
+    print_list(&list);
 
     printf("Removing 10 (first)...\n");
     remove_value(10, &list);
-    print_list(&list); // Expected: 20 40 50
+    print_list(&list); //
 
     printf("Removing 50 (last)...\n");
     remove_value(50, &list);
-    print_list(&list); // Expected: 20 40
+    print_list(&list);
     printf("\n");
 
     // 5. Clear
