@@ -2,10 +2,10 @@
 #define DATA_STRUCTURES_LINKED_STACK_H
 #include <stdbool.h>
 
-typedef struct sNODE {
+typedef struct Node {
 
     int data;
-    struct sNODE *next;
+    struct Node *next;
 
 } Node;
 

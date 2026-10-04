@@ -36,6 +36,9 @@ add_executable(doubly-linked-list
         doubly-linked-list/doubly-linked-list.h
         doubly-linked-list/doubly-linked-list.c
         doubly-linked-list/main.c
+        binary-search-tree/binary-search-tree.c
+        binary-search-tree/binary-search-tree.h
+        binary-search-tree/main.c
 )
 
 # Executable 6: Static Stack
@@ -71,4 +74,13 @@ add_executable(linked-queue
         linked-queue/linked-queue.h
         linked-queue/linked-queue.c
         linked-queue/main.c
+)
+
+# Executable 11: Binary Search Tree
+add_executable(binary-search-tree
+        binary-search-tree/binary-search-tree.c
+        binary-search-tree/binary-search-tree.h
+        binary-search-tree/main.c
+
+
 )

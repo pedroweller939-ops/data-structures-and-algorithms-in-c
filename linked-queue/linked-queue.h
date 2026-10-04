@@ -2,9 +2,9 @@
 #define DATA_STRUCTURES_LINKED_QUEUE_H
 #include <stdbool.h>
 
-typedef struct NODE {
+typedef struct Node {
     int data;
-    struct NODE *next;
+    struct Node *next;
 
 } Node;
 

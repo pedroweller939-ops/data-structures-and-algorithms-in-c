@@ -5,10 +5,10 @@
 #ifndef DATA_STRUCTURES_SINGLY_LINKED_ORDERED_LIST_H
 #define DATA_STRUCTURES_SINGLY_LINKED_ORDERED_LIST_H
 
-typedef struct NODE{
+typedef struct Node{
 
     int data;
-    struct NODE *next;
+    struct Node *next;
 
 } Node;
 
